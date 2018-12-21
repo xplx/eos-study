@@ -1,5 +1,5 @@
 /**
- * ·¢ËÍÑÓÊ±½»Ò×£ºÑÓÊ±½»Ò×¿ÉÒÔ±ÜÃâ»Ø¹ö¹¥»÷¡£
+ * å‘é€å»¶æ—¶äº¤æ˜“ï¼šå»¶æ—¶äº¤æ˜“å¯ä»¥é¿å…å›æ»šæ”»å‡»ã€‚
  *sudo eosio-cpp -o delayedtransaction.wasm delayedtransaction.cpp -abigen
  *cleos set contract delay /home/wxp/contracts/delayedtransaction
  *cleos push action delay delayedhi '["alice", 1]' -p alice
@@ -53,9 +53,9 @@ public:
 	void deletetable(name user,uint128_t id) {
 		id_index ids(_code, _code.value);
 		if (user.value != NULL) {
-			// Ñ°ÕÒÊÇ·ñÏàÍ¬½ğ¶îµÄÏÂ×¢·½
+			// å¯»æ‰¾æ˜¯å¦ç›¸åŒé‡‘é¢çš„ä¸‹æ³¨æ–¹
 			auto idx = ids.template get_index<"user"_n>();
-			//±íÊ¾²éÑ¯×îµÍÖµ±ß½ç
+			//è¡¨ç¤ºæŸ¥è¯¢æœ€ä½å€¼è¾¹ç•Œ
 			auto iterator = idx.find(user.value);
 			eosio_assert(iterator != idx.end(), "user does not exist");
 			idx.erase(iterator);
@@ -78,7 +78,7 @@ private:
 			return user.value;
 		}
 	};
-	// "delay"_n:delay(±íÃû×Ö)
+	// "delay"_n:delay(è¡¨åå­—)
 	typedef eosio::multi_index<"delay"_n, delayed,
 			indexed_by<"user"_n,const_mem_fun<delayed, uint64_t, &delayed::get_secondary_key>>> id_index;
 
